@@ -1,0 +1,16 @@
+{
+  "name": "natl-park-gallery",
+  "version": "0.0.1",
+  "description": "Gallery of national parks with flickr api",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tannerkj/natl-park-gallery.git"
+  },
+  "dependencies" : {
+    "turf" : "*",
+    "leaflet" : "*",
+    "bootstrap" : "*",
+    "jquery" : "*"
+  }
+}
