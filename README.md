@@ -33,6 +33,8 @@ In your *.gitignore* file, add node_modules, and they will be left out when push
 - set extent of map to extent of data using turf.js
 - filter features to exclude geometries that aren't parks (rivers, monuments, etc.)
 - add GeoJSON to map
+
+![National Park Gallery Image 1](/images/tutorial/natl-park-gallery-1.png)
 	
 
 	
