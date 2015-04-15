@@ -31,6 +31,8 @@ In your *.gitignore* file, add node_modules, and they will be left out when push
 
 - add a basemap
 - set extent of map to extent of data using turf.js
+- filter features to exclude geometries that aren't parks (rivers, monuments, etc.)
+- add GeoJSON to map
 	
 
 	
