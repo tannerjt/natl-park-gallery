@@ -21,7 +21,9 @@ Then, using command line, use npm to add the appropriate packages locally.
 
 	npm install
 	
-In your *.gitignore* file, add node_modules, and those packages will be left out when pushing changes to your [GitHub](https://github.com/) repo.
+You will see your packages in a new directory called *node_modules* inside your project folder.
+	
+In your *.gitignore* file, add node_modules, and they will be left out when pushing to your [GitHub](https://github.com/) repo.
 	
 
 	
