@@ -37,6 +37,10 @@ In your *.gitignore* file, add node_modules, and they will be left out when push
 ![National Park Gallery Image 1](/images/tutorial/natl-park-gallery-1.png)
 
 - add events for extent change
+- call flickr api with bboxes of selected feature layer(s)
+...
+...
+...
 	
 
 	
