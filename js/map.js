@@ -29,5 +29,19 @@ var np_geo = L.geoJson(np_boundaries, {
 	style : style
 });
 np_geo.addTo(map);
+getImages();
+
+// add events for extent change
+map.on('moveend', function (e) {
+	getImages();
+});
+
+function getImages() {
+	// loop through features in current extent
+	// generate bbox for each feature
+	// call flickr API and send bbox and possibly tags
+}
+
+
 
 
