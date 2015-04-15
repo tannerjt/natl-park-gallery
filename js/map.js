@@ -36,10 +36,21 @@ map.on('moveend', function (e) {
 	getImages();
 });
 
+// api key = 5ca26e8c98a49ec95a0fa4dfaa7623d8
 function getImages() {
-	// loop through features in current extent
-	// generate bbox for each feature
-	// call flickr API and send bbox and possibly tags
+	// get current extent
+	var mapBounds = map.getBounds();
+	var centroid;
+	$.each(np_geo.getLayers(), function (i, l) {
+		// get centroid of layer
+		centroid = turf.centroid(l.feature);
+		var latlng = L.latLng([centroid.geometry.coordinates[1], centroid.geometry.coordinates[0]]);
+		if(mapBounds.contains(latlng)) {
+			// call flickr on these bboxes of this feature layer
+			// and maybe tags
+			console.log(l.feature.properties['UNIT_NAME']);
+		}
+	})
 }
 
 
