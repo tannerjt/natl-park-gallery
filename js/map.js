@@ -159,6 +159,10 @@ function buildHtml() {
 			gallery_container.append(img);
 		});
 	});
+
+	$("#slider").empty();
+	$("#slider").append(gallery_container);
+	$("#owl-slider").owlCarousel();
 }
 /********************************/
 
