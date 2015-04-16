@@ -9,3 +9,20 @@ html, body {
 	height : 500px; /* make dynamic */
 	width : 100%;
 }
+
+.thumbnail {
+  position: relative;
+  width: 200px;
+  height: 180px;
+  overflow: hidden;
+}
+.thumbnail img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}

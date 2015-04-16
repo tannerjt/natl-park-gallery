@@ -151,10 +151,16 @@ function buildHtml() {
 	});
 	$.each(current_gallery, function (idx, photos) {
 		$.each(photos, function (idx, photo) {
+			var div = $("<div />", {
+				class : 'thumbnail'
+			});
+
 			var img = $("<img />", {
 				src : photo
 			});
-			gallery_container.append(img);
+
+			div.append(img);
+			gallery_container.append(div);
 		});
 	});
 
