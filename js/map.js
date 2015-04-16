@@ -151,8 +151,6 @@ function buildHtml() {
 	});
 	$.each(current_gallery, function (idx, photos) {
 		$.each(photos, function (idx, photo) {
-			console.log(photo);
-			console.log(photo)
 			var img = $("<img />", {
 				src : photo
 			});
