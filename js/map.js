@@ -9,6 +9,8 @@ var np_boundaries, // raw geojson
 var queue = []; // placeholder if need for queue and digest management
 var cached = {}; // cache park images to limit api calls
 var current_gallery = {}; // images and details in current extent
+var current_req_length = 0;
+var queue_length = 0;
 
 // Application Configuraton Object
 var app_config = {
@@ -65,7 +67,19 @@ function getImages() {
 	var mapBounds = map.getBounds();
 	var centroid;
 	// clear current gallery
-	current_gallery = [];
+	current_gallery = {};
+	current_req_length = 0;
+	queue_length = 0;
+	// calculate number of matches for queue
+	$.each(np_geo.getLayers(), function (i, l) {
+		// get centroid of layer
+		centroid = turf.centroid(l.feature);
+		var latlng = L.latLng([centroid.geometry.coordinates[1], centroid.geometry.coordinates[0]]);
+		if(mapBounds.contains(latlng)) {
+			current_req_length += 1;
+		}
+	});
+	// Make flickr calls
 	$.each(np_geo.getLayers(), function (i, l) {
 		// get centroid of layer
 		centroid = turf.centroid(l.feature);
@@ -74,12 +88,15 @@ function getImages() {
 			if(l.feature.properties['UNIT_NAME'] in cached) {
 				// push existing parks with images
 				current_gallery[l.feature.properties['UNIT_NAME']] = cached[l.feature.properties['UNIT_NAME']];
+				queue_length += 1;
+				if(queue_length == current_req_length) {
+					buildHtml();
+				}
 			} else {
 				callFlickr(l.feature, l.feature.properties['UNIT_NAME']);
 			}
 		}
 	});
-	buildHtml();
 }
 
 function callFlickr(f, parkName) {
@@ -102,7 +119,13 @@ function callFlickr(f, parkName) {
 			nojsoncallback : 1
 		}
 	}).done(function (resp) {
-		if(resp.stat !== "ok") return;
+		queue_length += 1;
+		if(resp.stat !== "ok") {
+			if(queue_length == current_req_length) {
+				buildHtml()
+			}
+			return;
+		}
 		var photos = [];
 		$.each(resp.photos.photo, function (i, v) {
 			photos.push("https://farm" + v.farm + ".staticflickr.com/" + v.server + "/" + v.id + "_" + v.secret + "_n.jpg");
@@ -110,17 +133,32 @@ function callFlickr(f, parkName) {
 		// add to cache
 		cached[parkName] = photos;
 		current_gallery[parkName] = photos;
+		if(queue_length == current_req_length) {
+			buildHtml();
+		}
 	});
 }
 
 // builds html for carousel
 function buildHtml() {
 // obj to array
+//id="owl-example" class="owl-carousel"
 // randomize
 	var gallery_items;
-	$.each(current_gallery, function (idx, obj) {
-
-	})
+	var gallery_container = $("<div />", {
+		id : 'owl-slider',
+		class : 'own-carousel'
+	});
+	$.each(current_gallery, function (idx, photos) {
+		$.each(photos, function (idx, photo) {
+			console.log(photo);
+			console.log(photo)
+			var img = $("<img />", {
+				src : photo
+			});
+			gallery_container.append(img);
+		});
+	});
 }
 /********************************/
 
