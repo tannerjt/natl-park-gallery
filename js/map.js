@@ -166,7 +166,9 @@ function buildHtml() {
 
 	$("#slider").empty();
 	$("#slider").append(gallery_container);
-	$("#owl-slider").owlCarousel();
+	$("#owl-slider").owlCarousel({
+		
+	});
 }
 /********************************/
 
