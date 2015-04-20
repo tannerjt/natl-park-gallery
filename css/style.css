@@ -10,6 +10,11 @@ html, body {
 	width : 100%;
 }
 
+#sidebar {
+  background-color : #132839;
+  color : #799297;
+}
+
 .thumbnail {
   position: relative;
   width: 200px;
@@ -27,4 +32,8 @@ html, body {
   -webkit-transform: translate(-50%,-50%);
       -ms-transform: translate(-50%,-50%);
           transform: translate(-50%,-50%);
+}
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
 }
