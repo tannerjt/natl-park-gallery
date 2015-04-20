@@ -26,7 +26,7 @@ var flickr_config = {
 };
 
 // create map and add tiled basemap
-map = L.map('map').setView([40.12, -98.57], 5);
+map = L.map('map').setView([40.12, -98.57], 4);
 basemap = L.tileLayer(app_config.basemap, {
 	attribution: app_config.basemapAttribution
 });
