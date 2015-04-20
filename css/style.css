@@ -13,8 +13,10 @@ html, body {
 .thumbnail {
   position: relative;
   width: 200px;
-  height: 180px;
+  height: 140px;
   overflow: hidden;
+  margin : 0;
+  padding : 0;
 }
 .thumbnail img {
   position: absolute;

@@ -152,7 +152,8 @@ function buildHtml() {
 	$.each(current_gallery, function (idx, photos) {
 		$.each(photos, function (idx, photo) {
 			var div = $("<div />", {
-				class : 'thumbnail'
+				class : 'thumbnail',
+				html : 'inner string'
 			});
 
 			var img = $("<img />", {
@@ -167,7 +168,10 @@ function buildHtml() {
 	$("#slider").empty();
 	$("#slider").append(gallery_container);
 	$("#owl-slider").owlCarousel({
-		
+		margin : 10,
+		loop : true,
+		autoWidth : true,
+		stagePadding : 50
 	});
 }
 /********************************/
