@@ -46,8 +46,10 @@ In your *.gitignore* file, add node_modules, and they will be left out when push
 
 ![National Park Gallery Image 3](/images/tutorial/natl-park-gallery-3.png)
 
-- add some additional functionality
-...
+- add events for mouseover, mouseout, and click
+
+![National Park Gallery Image 4](/images/tutorial/natl-park-gallery-4.png)
+
 ...
 ...
 	
