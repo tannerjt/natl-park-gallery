@@ -173,8 +173,7 @@ function buildHtml() {
 	$.each(current_gallery, function (park, photos) {
 		$.each(photos, function (idx, photo) {
 			var div = $("<div />", {
-				class : 'thumbnail',
-				html : 'inner string'
+				class : 'thumbnail'
 			});
 
 			div.on('mouseover', function (e) {
@@ -185,20 +184,27 @@ function buildHtml() {
 					l.setStyle(style());
 				});
 			});
-			div.on('click', function (e) {
-
-			});
 
 			var title = $("<span />", {
 				html : "<h2><span class='glyphicon glyphicon-globe inverse'></span>  " + park + " National Park</h2>",
 				class : 'parkname-title'
 			});
 
+			var fullPhoto = photo.replace("n.jpg", "b.jpg");
+		
+			var link = $("<a />", {
+				"data-lightbox" : "image-" + idx,
+				"data-title" : park,
+				href : fullPhoto,
+				text : park
+			});
+
 			var img = $("<img />", {
 				src : photo
 			});
 
-			div.append(img);
+			link.append(img);
+			div.append(link);
 			div.append(title);
 			gallery_container.append(div);
 		});
