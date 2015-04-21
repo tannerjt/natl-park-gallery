@@ -48,7 +48,15 @@ np_boundaries.features = $.map(np_boundaries.features, function (val, i) {
 function style(feature) {
 	return {
 		weight : 1,
+		color : 'green',
 		fillColor : 'green'
+	}
+}
+function highlightStyle() {
+	return {
+		weight : 4,
+		color : 'red',
+		fillColor : 'red'
 	}
 }
 /********************/
@@ -59,6 +67,22 @@ np_geo = L.geoJson(np_boundaries, {
 });
 np_geo.addTo(map);
 getImages(); // make iniital call once
+
+function highlightPark(park) {
+	var park = park;
+	$.each(np_geo.getLayers(), function (idx, layer) {
+		if (layer.feature.properties['UNIT_NAME'] == park) {
+			layer.setStyle(highlightStyle());
+			/*
+			var centroid = turf.centroid(layer.feature);
+			var latlng = L.latLng([centroid.geometry.coordinates[1], centroid.geometry.coordinates[0]]);
+			map.panTo(latlng);
+			*/
+		} else {
+			layer.setStyle(style());
+		}
+	})
+}
 /****************/
 
 /* APPLICATION FLICKR FUNCTIONS */
@@ -151,6 +175,18 @@ function buildHtml() {
 			var div = $("<div />", {
 				class : 'thumbnail',
 				html : 'inner string'
+			});
+
+			div.on('mouseover', function (e) {
+				highlightPark(park);
+			});
+			div.on('mouseout', function (e) {
+				$.each(np_geo.getLayers(), function (i, l) {
+					l.setStyle(style());
+				});
+			});
+			div.on('click', function (e) {
+
 			});
 
 			var title = $("<span />", {
