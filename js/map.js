@@ -20,7 +20,7 @@ var app_config = {
 
 // Flickr Configuration
 var flickr_config = {
-	maxNumImages : 5, // max number of images to request for each park
+	maxNumImages : 4, // max number of images to request for each park
 	url : "https://api.flickr.com/services/rest",
 	key : "5ca26e8c98a49ec95a0fa4dfaa7623d8"
 };
@@ -90,7 +90,7 @@ function getImages() {
 				current_gallery[l.feature.properties['UNIT_NAME']] = cached[l.feature.properties['UNIT_NAME']];
 				queue_length += 1;
 				if(queue_length == current_req_length) {
-					buildHtml();
+					buildHtml(l.feature.properties['UNIT_NAME']);
 				}
 			} else {
 				callFlickr(l.feature, l.feature.properties['UNIT_NAME']);
@@ -122,7 +122,7 @@ function callFlickr(f, parkName) {
 		queue_length += 1;
 		if(resp.stat !== "ok") {
 			if(queue_length == current_req_length) {
-				buildHtml()
+				buildHtml(parkName)
 			}
 			return;
 		}
@@ -134,26 +134,28 @@ function callFlickr(f, parkName) {
 		cached[parkName] = photos;
 		current_gallery[parkName] = photos;
 		if(queue_length == current_req_length) {
-			buildHtml();
+			buildHtml(parkName);
 		}
 	});
 }
 
 // builds html for carousel
 function buildHtml() {
-// obj to array
-//id="owl-example" class="owl-carousel"
-// randomize
 	var gallery_items;
 	var gallery_container = $("<div />", {
 		id : 'owl-slider',
 		class : 'own-carousel'
 	});
-	$.each(current_gallery, function (idx, photos) {
+	$.each(current_gallery, function (park, photos) {
 		$.each(photos, function (idx, photo) {
 			var div = $("<div />", {
 				class : 'thumbnail',
 				html : 'inner string'
+			});
+
+			var title = $("<span />", {
+				html : "<h2><span class='glyphicon glyphicon-globe inverse'></span>  " + park + " National Park</h2>",
+				class : 'parkname-title'
 			});
 
 			var img = $("<img />", {
@@ -161,6 +163,7 @@ function buildHtml() {
 			});
 
 			div.append(img);
+			div.append(title);
 			gallery_container.append(div);
 		});
 	});
@@ -169,7 +172,6 @@ function buildHtml() {
 	$("#slider").append(gallery_container);
 	$("#owl-slider").owlCarousel({
 		margin : 10,
-		loop : true,
 		autoWidth : true,
 		stagePadding : 50
 	});

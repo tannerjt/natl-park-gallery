@@ -12,7 +12,11 @@ html, body {
 
 #sidebar {
   background-color : #132839;
-  color : #799297;
+  color : #ffffff;
+}
+
+#slider {
+  background : #000000;
 }
 
 .thumbnail {
@@ -32,6 +36,22 @@ html, body {
   -webkit-transform: translate(-50%,-50%);
       -ms-transform: translate(-50%,-50%);
           transform: translate(-50%,-50%);
+}
+.parkname-title {
+  z-index : 9999;
+  position : absolute;
+  width : 100%;
+  top : 0;
+  left : 0;
+  background-color : #000000;
+  opacity : 0.8;
+}
+.parkname-title h2 {
+  font : 14px sans-serif;
+  font-weight : 250;
+  padding : 5px;
+  margin : 0;
+  color : #fff;
 }
 .nopadding {
    padding: 0 !important;
