@@ -32,6 +32,8 @@ html, body {
   left : 0;
   width : 100%;
   text-align : center;
+  background-color : black;
+  padding : 5px;
 }
 .instructions {
   color : #EDD8A2;

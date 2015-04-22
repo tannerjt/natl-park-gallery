@@ -182,7 +182,9 @@ function buildHtml() {
 		id : 'owl-slider',
 		class : 'own-carousel'
 	});
+	var list = [];
 	$.each(current_gallery, function (park, photos) {
+		list.push("<a class='park-item' href='' target='_blank'>" + park + "</a>");
 		$.each(photos, function (idx, photo) {
 			var div = $("<div />", {
 				class : 'thumbnail'
@@ -221,6 +223,12 @@ function buildHtml() {
 		});
 	});
 
+	list = list.join(' | ');
+	$("#parkslist").html(list);
+	$(".park-item").on('click', function (e) {
+		e.preventDefault();
+		highlightPark(e.target.text);
+	})
 	$("#slider").empty();
 	$("#slider").append(gallery_container);
 	$("#owl-slider").owlCarousel({
