@@ -13,12 +13,30 @@ html, body {
 #sidebar {
   background-color : #132839;
   color : #ffffff;
+  text-align : center;
+}
+
+#sidebar-content {
+  padding : 8px;
 }
 
 #slider {
   background : #000000;
 }
-
+#apptitle {
+  color : green;
+}
+#sticky {
+  position : absolute;
+  bottom : 0;
+  left : 0;
+  width : 100%;
+  text-align : center;
+}
+.instructions {
+  color : #EDD8A2;
+  padding : 8px 15px;
+}
 .thumbnail {
   position: relative;
   width: 200px;

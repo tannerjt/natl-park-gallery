@@ -63,7 +63,18 @@ function highlightStyle() {
 
 /* GEOJSON LAYER */
 np_geo = L.geoJson(np_boundaries, {
-	style : style
+	style : style,
+	onEachFeature : function (f, l) {
+		var pn =  f.properties['UNIT_NAME'] + " National Park";
+		l.bindPopup(
+			"<h3>" + pn + "</h3>" +
+			"<a href='http://en.wikipedia.org/wiki/" + pn.split(" ").join("_") + 
+			"' target='_blank'>Learn more about this National Park</a>"
+		, {
+			autoPan : false
+		});
+
+	}
 });
 np_geo.addTo(map);
 getImages(); // make iniital call once
@@ -73,6 +84,7 @@ function highlightPark(park) {
 	$.each(np_geo.getLayers(), function (idx, layer) {
 		if (layer.feature.properties['UNIT_NAME'] == park) {
 			layer.setStyle(highlightStyle());
+			layer.openPopup();
 			/*
 			var centroid = turf.centroid(layer.feature);
 			var latlng = L.latLng([centroid.geometry.coordinates[1], centroid.geometry.coordinates[0]]);
@@ -195,8 +207,7 @@ function buildHtml() {
 			var link = $("<a />", {
 				"data-lightbox" : "image-" + idx,
 				"data-title" : park,
-				href : fullPhoto,
-				text : park
+				href : fullPhoto
 			});
 
 			var img = $("<img />", {
