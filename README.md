@@ -29,6 +29,8 @@ In your *.gitignore* file, add node_modules, and they will be left out when push
 
 ###### Building the Application
 
+For the sake of brevity, below is an outline of the steps taken to build out this application.  View source for specific code snippets.
+
 - add a basemap
 - set extent of map to extent of data using turf.js
 - filter features to exclude geometries that aren't parks (rivers, monuments, etc.)
@@ -48,9 +50,12 @@ In your *.gitignore* file, add node_modules, and they will be left out when push
 
 ![National Park Gallery Image 4](/images/tutorial/natl-park-gallery-4.png)
 
-...
-...
-...
+- add sidebar content and style
+
+View Application [Here](http://tannerjt.github.io/natl-park-gallery/)
+
+![National Park Gallery Image 5](/images/tutorial/natl-park-gallery-5.png)
+
 	
 
 	
