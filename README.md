@@ -1,6 +1,6 @@
 ## National Parks Map and Image Gallery
 
-This application and the accompanying tutorial are a tribute to National Park Week (Apr 18-26).  [QGIS](http://www.qgis.org/en/site/), [Leaflet](http://leafletjs.com/), [Turf.js](http://turfjs.org/), [jQuery](https://jquery.com/), [Bootstrap](http://getbootstrap.com/), and [Flickr API](https://www.flickr.com/services/api/) are required to build out this application using this tutorial.
+This application and the accompanying tutorial are a tribute to National Park Week (Apr 18-26).  [QGIS](http://www.qgis.org/en/site/), [Leaflet](http://leafletjs.com/), [Turf.js](http://turfjs.org/), [jQuery](https://jquery.com/), [Bootstrap](http://getbootstrap.com/), [Lightbox](http://lokeshdhakar.com/projects/lightbox2/), and [Flickr API](https://www.flickr.com/services/api/) are required to build out this application using this tutorial.
 
 ###### Data Acquisition and Conversion/Getting Required Modules
 
@@ -44,6 +44,7 @@ In your *.gitignore* file, add node_modules, and they will be left out when push
 
 - add style with Bootstrap and dynamic sizing
 - add events for mouseover, mouseout, and click
+- use Lightbox to showcase selected images
 
 ![National Park Gallery Image 4](/images/tutorial/natl-park-gallery-4.png)
 
