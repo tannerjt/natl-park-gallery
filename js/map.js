@@ -208,7 +208,7 @@ function buildHtml() {
 		
 			var link = $("<a />", {
 				"data-lightbox" : "image-" + idx,
-				"data-title" : park,
+				"data-title" : park + " (courtesy of Flickr)",
 				href : fullPhoto
 			});
 
