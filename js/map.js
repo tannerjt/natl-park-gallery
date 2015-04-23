@@ -77,7 +77,7 @@ np_geo = L.geoJson(np_boundaries, {
 	}
 });
 np_geo.addTo(map);
-getImages(); // make iniital call once
+getImages(); // make inital call once
 
 function highlightPark(park) {
 	var park = park;
