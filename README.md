@@ -290,7 +290,9 @@ Below is an outline of the steps taken to build out this application, along with
 
 - add sidebar content and style
 
-View Application [Here](http://tannerjt.github.io/natl-park-gallery/)
+[View Application](http://tannerjt.github.io/natl-park-gallery/)
+
+[View Source](https://github.com/tannerjt/natl-park-gallery)
 
 What it looks like:
 
