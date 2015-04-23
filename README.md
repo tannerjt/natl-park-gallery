@@ -155,10 +155,8 @@ Below is an outline of the steps taken to build out this application, along with
 			});
 		}
 
-- get current extent
-- clear current gallery
-- calculate the # of matches for image queue
-- make Flickr API calls
+- get current extent and clear current gallery
+- calculate the # of matches for image queue and make Flickr API calls
 
 		function getImages() {
 			// get current extent
@@ -293,6 +291,8 @@ Below is an outline of the steps taken to build out this application, along with
 - add sidebar content and style
 
 View Application [Here](http://tannerjt.github.io/natl-park-gallery/)
+
+What it looks like:
 
 ![National Park Gallery Image 5](/images/tutorial/natl-park-gallery-5.png)
 
